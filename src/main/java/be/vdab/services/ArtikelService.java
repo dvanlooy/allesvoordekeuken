@@ -1,7 +1,10 @@
 package be.vdab.services;
 
-import be.vdab.repositories.ArtikelRepository;
+import java.math.BigDecimal;
+import java.util.List;
+
 import be.vdab.entities.Artikel;
+import be.vdab.repositories.ArtikelRepository;
 
 public class ArtikelService extends AbstractService {
 	private final ArtikelRepository artikelRepository = new ArtikelRepository();
@@ -13,6 +16,17 @@ public class ArtikelService extends AbstractService {
 	public void create(Artikel artikel) {
 		beginTransaction();
 		artikelRepository.create(artikel);
+		commit();
+	}
+
+	public List<Artikel> findByNaamContains(String woord) {
+		return artikelRepository.findByNaamContains(woord);
+	}
+
+	public void prijsverhoging(BigDecimal percentage) {
+		BigDecimal factor = BigDecimal.ONE.add(percentage.divide(BigDecimal.valueOf(100)));
+		beginTransaction();
+		artikelRepository.prijsverhoging(factor);
 		commit();
 	}
 }
