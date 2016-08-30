@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import be.vdab.repositories.ArtikelRepository;
+import be.vdab.services.ArtikelService;
 
 @WebServlet("/artikels/zoekenopnummer.htm")
 public class ZoekenOpNummerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/artikels/zoekenopnummer.jsp";
-	private final transient ArtikelRepository artikelRepository = new ArtikelRepository();
+	private final transient ArtikelService artikelService = new ArtikelService();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (request.getQueryString() != null) {
 			try {
-				request.setAttribute("artikel", artikelRepository.read(Long.parseLong(request.getParameter("id"))));
+				request.setAttribute("artikel", artikelService.read(Long.parseLong(request.getParameter("id"))));
 			} catch (NumberFormatException ex) {
 				request.setAttribute("fouten", Collections.singletonMap("id", "tik een getal"));
 				// singletonMap maakt intern een Map met één entry (key=id,
