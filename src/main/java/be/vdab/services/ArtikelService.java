@@ -29,4 +29,8 @@ public class ArtikelService extends AbstractService {
 		artikelRepository.prijsverhoging(factor);
 		commit();
 	}
+	
+	public List<Artikel> findAll() {
+		return artikelRepository.findAll();
+		}
 }

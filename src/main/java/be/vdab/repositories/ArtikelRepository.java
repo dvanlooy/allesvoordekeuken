@@ -22,4 +22,9 @@ public class ArtikelRepository extends AbstractRepository {
 	public void prijsverhoging(BigDecimal factor) {
 		getEntityManager().createNamedQuery("Artikel.prijsverhoging").setParameter("factor", factor).executeUpdate();
 	}
+	
+	public List<Artikel> findAll() {
+		return getEntityManager().createNamedQuery("Artikel.findAll", Artikel.class)
+		.getResultList();
+		}
 }
