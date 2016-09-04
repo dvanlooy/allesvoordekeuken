@@ -31,8 +31,15 @@
 		</div>
 		<label>Garantie: <span>${fouten.garantie}</span> <input
 			name='garantie' value='${param.garantie}' type='number' min='0'
-			id='garantie'></label> <input type='submit' value='Toevoegen'
-			id='toevoegknop'>
+			id='garantie'></label> <label>Artikelgroep:<span>${fouten.artikelgroepid}</span>
+			<select name='artikelgroepid' size='${artikelgroepen.size()}'
+			required>
+				<c:forEach items='${artikelgroepen}' var='artikelgroep'>
+					<option value='${artikelgroep.id}'
+						${artikelgroep.id == param.artikelgroepid ? 'selected' : ''}>
+						${artikelgroep.naam}</option>
+				</c:forEach>
+		</select></label> <input type='submit' value='Toevoegen' id='toevoegknop'>
 	</form>
 	<script>
 		document.getElementById('toevoegform').onsubmit = function() {

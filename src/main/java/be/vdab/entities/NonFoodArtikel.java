@@ -11,10 +11,11 @@ public class NonFoodArtikel extends Artikel {
 	private static final long serialVersionUID = 1L;
 	private int garantie;
 
-	public NonFoodArtikel(String naam, BigDecimal aankoopprijs, BigDecimal verkoopprijs, int garantie) {
-		super(naam, aankoopprijs, verkoopprijs);
-		setGarantie(garantie);
-	}
+	public NonFoodArtikel(String naam, BigDecimal aankoopprijs,
+			BigDecimal verkoopprijs, int garantie, Artikelgroep artikelgroep) {
+			super(naam, aankoopprijs, verkoopprijs, artikelgroep);
+			setGarantie(garantie);
+			}
 
 	public static boolean isGarantieValid(int garantie) {
 		return garantie >= 0;

@@ -11,10 +11,11 @@ public class FoodArtikel extends Artikel {
 	private static final long serialVersionUID = 1L;
 	private int houdbaarheid;
 
-	public FoodArtikel(String naam, BigDecimal aankoopprijs, BigDecimal verkoopprijs, int houdbaarheid) {
-		super(naam, aankoopprijs, verkoopprijs);
-		setHoudbaarheid(houdbaarheid);
-	}
+	public FoodArtikel(String naam, BigDecimal aankoopprijs,
+			BigDecimal verkoopprijs, int houdbaarheid, Artikelgroep artikelgroep) {
+			super(naam, aankoopprijs, verkoopprijs, artikelgroep);
+			setHoudbaarheid(houdbaarheid);
+			}
 
 	public static boolean isHoudbaarheidValid(int houdbaarheid) {
 		return houdbaarheid >= 1;
